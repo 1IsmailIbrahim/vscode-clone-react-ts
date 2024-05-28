@@ -4,7 +4,7 @@ import { RootState, useAppDispatch } from "../app/store";
 import { setClickedFiles, setOpenedFiles } from "../app/features/fileTreeSlice";
 import { IFile } from "../interfaces";
 import OpenedFilesBarTab from "./OpenedFilesBarTab";
-import DropMenu from "./ui/DropMenu";
+import ContextMenu from "./ui/ContextMenu";
 
 const OpenedFilesBar = () => {
   const dispatch = useAppDispatch();
@@ -62,7 +62,7 @@ const OpenedFilesBar = () => {
 
   return (
     <div>
-      <div className="flex">
+      <div className="flex tab-container">
         {openedFiles.map((file) => (
           <OpenedFilesBarTab
             key={file.id}
@@ -73,7 +73,7 @@ const OpenedFilesBar = () => {
         ))}
       </div>
       {menuVisible && (
-        <DropMenu
+        <ContextMenu
           ref={contextMenuRef}
           visible={menuVisible}
           position={menuPosition}

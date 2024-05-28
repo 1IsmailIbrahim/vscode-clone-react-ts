@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setClickedFiles } from "../app/features/fileTreeSlice";
 import { RootState } from "../app/store";
-import { IFile } from '../interfaces';
-import RenderFileIcon from './RenderFileIcon';
-import CloseIcon from './SVG/CloseIcon';
+import { IFile } from "../interfaces";
+import RenderFileIcon from "./RenderFileIcon";
+import CloseIcon from "./SVG/CloseIcon";
 
 interface IProps {
   file: IFile;
@@ -12,9 +12,15 @@ interface IProps {
   onCloseFile: () => void;
 }
 
-const OpenedFilesBarTab: React.FC<IProps> = ({ file, onContextMenu, onCloseFile }) => {
+const OpenedFilesBarTab: React.FC<IProps> = ({
+  file,
+  onContextMenu,
+  onCloseFile,
+}) => {
   const dispatch = useDispatch();
-  const { activeTabId } = useSelector((state: RootState) => state.fileTree.clickedFile);
+  const { activeTabId } = useSelector(
+    (state: RootState) => state.fileTree.clickedFile
+  );
 
   const onclick = () => {
     const { id, name, content } = file;
